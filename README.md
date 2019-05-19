@@ -1,7 +1,7 @@
 # 这是一个电商项目
-## [主流开源协议之间有何异同？]
+[主流开源协议之间有何异同？]
 (https://blog.csdn.net/xiaodaima2016/article/details/83645854)
-##制作首页App组件
+## 制作首页App组件
 1. 完成Header区域，使用的是Mint-UI中的Header组件
 2. 制作底部Tabbar区域，使用的是MUI的Tabbar.html
 + 在制作 购物车 小图标的时候，操作会相对多一些
