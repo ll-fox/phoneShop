@@ -1,4 +1,4 @@
-# 这是一个很厉害的电商项目
+# 这是一个电商项目
 ## [主流开源协议之间有何异同？]
 (https://blog.csdn.net/xiaodaima2016/article/details/83645854)
 ##制作首页App组件
