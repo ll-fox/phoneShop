@@ -6,12 +6,23 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 //1.3导入自己的router.js
 import router from "./router.js"
+//导入时间插件
+import moment from 'moment'
+//定义全局过滤器
+Vue.filter("dateFormat",function(dataStr,pattern="YYYY-MM-DD HH:mm:ss"){
+    //如果直接调用表示当前时间 moment()
+    return moment(dataStr).format(pattern)
+})
+
 
 //2.1 导入vue-resource
 import VueResource from 'vue-resource'
 //2.2 安装vue-resource
 Vue.use(VueResource)
-
+//设置请求根路径
+Vue.http.options.root = "http://*****.**";
+//全局设置post 时候表单数据格式组织形式
+Vue.http.options.emulateJSON = true;
 //导入mui
 import './lib/mui/css/mui.css'
 import './lib/mui/css/icons-extra.css'
@@ -28,10 +39,11 @@ import './lib/mui/css/icons-extra.css'
 //使用Vue.component 注册按钮组件
 // Vue.component(Button.name,Button)//Button.name就是组件名称（mt-button ）
 
-import { Header,Swipe, SwipeItem } from 'mint-ui';
+import { Header,Swipe, SwipeItem ,Button} from 'mint-ui';
 Vue.component(Header.name, Header);
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
+Vue.component(Button.name, Button);
 //导入App根组件
 import app from './App.vue'
 

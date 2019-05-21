@@ -3,24 +3,18 @@
         <!-- 轮播图 -->
         <mt-swipe :auto="4000">
             <!-- 在组件中使用 v-for 循环的话，一定要使用key -->
-            <mt-swipe-item>
-                <img src="http://www.tms.org.cn/uploads/allimg/180315/1-1P31510025V91.jpg" alt="">
-            </mt-swipe-item>
-            <mt-swipe-item>
-                <img src="http://d.ifengimg.com/w600/e0.ifengimg.com/09/2018/1207/17D68B2EDD6EFB34F02AB508E7565E953CD167CB_size29_w640_h361.jpeg" alt="">
-            </mt-swipe-item>
-            <mt-swipe-item>
-                <img src="http://g.hiphotos.baidu.com/image/h%3D300/sign=9d9f776b1bce36d3bd0485300af23a24/fcfaaf51f3deb48f4a7e2a6ffe1f3a292df57868.jpg" alt="">
+            <mt-swipe-item v-for="item in lunbotuList" :key="item.id">
+                <img :src="item.img">
             </mt-swipe-item>
         </mt-swipe>
         <!-- 九宫格 -->
         <ul class="mui-table-view mui-grid-view mui-grid-9">
-            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="/home/newslist">
                     <img src="../../images/menu1.png" alt="">
-                    <div class="mui-media-body">新闻资讯</div></a></li>
-            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+                    <div class="mui-media-body">新闻资讯</div></router-link></li>
+            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link  to="/home/photolist">
                     <img src="../../images/menu2.png" alt="">
-                    <div class="mui-media-body">图片分享</div></a></li>
+                    <div class="mui-media-body">图片分享</div></router-link></li>
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
                     <img src="../../images/menu3.png" alt="">
                     <div class="mui-media-body">商品购买</div></a></li>
@@ -42,7 +36,18 @@ export default{
     data(){
         return{
             lunbotuList:[
-                
+                {
+                    id:1,
+                    img:"http://images.glass.cn/news/201901/9ae6a93c5ba54071b96beb6a1590b75d.jpg"
+                },
+                {
+                    id:3,
+                    img:"http://e0.ifengimg.com/04/2019/0506/E4E8FA94933B3DDC8835E60721AD6C8C475485F0_size71_w600_h400.jpeg"
+                },
+                {
+                    id:4,
+                    img:"http://www.cn314.com/d/file/xinpin/58b6114d439681788bcc473afd7976b2.jpg"
+                }
             ]//保存轮播图的数组
         }
     },
