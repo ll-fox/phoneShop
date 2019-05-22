@@ -60,3 +60,36 @@
 + 换一种思路：当评论成功后，在客户端，手动拼接处一个最新的评论对象，然后调用数组的unshift方法，吧最新评论，追加到data中comments的开头，这样 完美实现刷新评论列表的需求；
 
 ## 改造图片分析 按钮为 路由的链接并显示对应的组件页面
+
+## 绘制图片列表 组件页面的结构并美化
+1. 制作顶部的滑动条
+2. 制作底部的图片列表
+### 制作顶部滑动条的坑们；
+1. 需要借助于MUI中的 tab-top-webview-main.html
+2. 需要把 slider区域的 mui-fullscreen 类去掉
+2. 滑动条无法正常触发滑动，通过检查官方文档，发现这是一个js组件，需要被初始化一下
++ 导入mui.js
++ 调用官方提供的方式与初始化：
+```
+mui('.mui-scroll-wrapper').scroll({
+	deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+});
+```
+4. 我们在初始化 滑动条的时候，导入的 mui.js ,但是，控制台报错：“Uncaught TypeError: 'caller', 'callee', and 'arguments' properties may not be accessed on strict mode functions or the arguments objects for calls to them”
++ 经过我们合理的推测，可能是mui.js中使用到了 'caller', 'callee', and 'arguments' 东西，但是webpack 打包好的 bundle.js 中，默认是启用严格模式的，所以，这两者冲突了；
++ 解决方案：1.把mui.js中的非严格模式代码改掉；但是不现实；2. 把webpack 打包时候的严格模式禁用掉
++ 最终，我们选择了 第二个 方案，移除严格模式：使用这个插件 "babel-plugin-transform-remove-strict-mode"
+5. 刚进入图片分享页面的时候，滑动条无法正常工作，经过我们认真的分析，发现，如果要初始化 滑动条，必须要等 DOM 元素加载完毕，所以，我们把 初始化滑动条 的代码，搬到了mounted 生命周期函数中
+6. 当滑动条 调试OK后 ，发现，tabber无法正常工作了，这时候，我们需要把每个 tabber 按钮的样式中 "mui-tab-item" 改一下名字
+7. 获取所有分类，并渲染 分类列表
+## 制作图片列表区域
+1. 图片列表使用懒加载技术，我们可以使用 Mint.ui 提供的现成的 组件 'lazy-load'
+2. 根据'lazy-load'的使用文档，尝试使用
+3. 渲染图片列表数据
+
+### 实现了 点击图片 跳转到图片详情页面
+
+## 实现了 点击图片 跳转到 图片详情页面
+1. 在改造li成 router-link 的时候，需要使用 tag 属性 指定要渲染为 哪种元素
+
+## 实现详情页面的布局和美化，同时获取数据渲染页面

@@ -39,11 +39,13 @@ import './lib/mui/css/icons-extra.css'
 //使用Vue.component 注册按钮组件
 // Vue.component(Button.name,Button)//Button.name就是组件名称（mt-button ）
 
-import { Header,Swipe, SwipeItem ,Button} from 'mint-ui';
+import { Header,Swipe, SwipeItem ,Lazyload,Button} from 'mint-ui';
 Vue.component(Header.name, Header);
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 Vue.component(Button.name, Button);
+
+Vue.use(Lazyload);
 //导入App根组件
 import app from './App.vue'
 

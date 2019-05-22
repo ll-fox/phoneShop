@@ -28,6 +28,7 @@
     "webpack-dev-server": "^3.3.1"
   },
   "dependencies": {
+    "babel-plugin-transform-remove-strict-mode": "^0.0.2",
     "vue-router": "^3.0.6",
     "vue-template-compiler": "^2.6.10"
   }
