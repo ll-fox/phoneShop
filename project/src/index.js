@@ -13,7 +13,20 @@ Vue.filter("dateFormat",function(dataStr,pattern="YYYY-MM-DD HH:mm:ss"){
     //如果直接调用表示当前时间 moment()
     return moment(dataStr).format(pattern)
 })
-
+//安装图片预览插件
+import VuePreview from 'vue-preview'
+// defalut install
+Vue.use(VuePreview)
+// Vue.use(preview, {
+//     mainClass: 'pswp--minimal--dark',
+//     barsSize: {top: 0, bottom: 0},
+//     captionEl: false,
+//     fullscreenEl: false,
+//     shareEl: false,
+//     bgOpacity: 0.85,
+//     tapToClose: true,
+//     tapToToggleControls: false
+//   })
 
 //2.1 导入vue-resource
 import VueResource from 'vue-resource'

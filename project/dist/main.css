@@ -19,6 +19,8 @@
 .mintui-success:before { content: "\E602"; }
 .mintui-field-success:before { content: "\E609"; }
 
+
+
 /* Cell Component */
 /* Header Component */
 /* Button Component */
@@ -346,6 +348,112 @@ ul img[data-v-4fcacc3e]{
     justify-content: space-between
 }
 .content[data-v-9f2010c6]{
+}
+
+
+*[data-v-7e616cf2]{
+    touch-action: pan-x;
+}
+img[lazy="loading"][data-v-7e616cf2]{
+    width: 40px;
+    height: 300px;
+    margin: auto
+}
+img[data-v-7e616cf2]{
+  width: 100%;
+  vertical-align: middle;
+}
+.photo-list[data-v-7e616cf2]{
+    list-style: none;
+    margin: 0;
+    padding: 10px;
+}
+.photo-list li[data-v-7e616cf2]{
+background-color: #ccc;
+margin-bottom: 10px;
+box-shadow: 0 0 9px #ccc;
+position: relative
+}
+.info[data-v-7e616cf2]{
+    max-height: 84px;
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4)
+}
+.info .info-title[data-v-7e616cf2]{
+    font-size: 14px;
+}
+.info .info-zhahiyao[data-v-7e616cf2]{
+    font-size: 12px;
+}
+
+
+.photoinfo-container[data-v-38c79902]{
+    padding: 3px;
+}
+.photoinfo-container h3[data-v-38c79902]{
+    color: #26a2ff;
+    font-size: 15px;
+    text-align: center;
+    margin: 15px 0
+}
+.photoinfo-container .subtitle[data-v-38c79902]{
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px
+}
+.photoinfo-container .content[data-v-38c79902]{
+    font-size: 13px;
+    line-height: 30px
+}
+
+
+.goods-list[data-v-0c7593ca]{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 7px;
+    justify-content: space-between
+}
+.good-item[data-v-0c7593ca]{
+    width: 49%;
+    margin: 3px 0;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 8px #ccc;
+    padding: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 293px;
+}
+.good-item img[data-v-0c7593ca]{
+    width: 100%;
+}
+.good-item .title[data-v-0c7593ca]{
+    font-size: 14px;
+}
+.good-item .info[data-v-0c7593ca]{
+    background-color: #eee;
+}
+.good-item .info p[data-v-0c7593ca]{
+    margin: 0;
+    padding: 5px;
+}
+.good-item .info .price[data-v-0c7593ca]{
+}
+.good-item .info .price .now[data-v-0c7593ca]{
+    color: red;
+    font-weight: bold;
+    font-size: 16px;
+}
+.good-item .info .price .old[data-v-0c7593ca]{
+    text-decoration: line-through;
+    font-size: 12px;
+    margin-left: 10px;
+}
+.good-item .info .sell[data-v-0c7593ca]{
+    display: flex;
+    justify-content: space-between;
 }
 
 /*!
@@ -6026,6 +6134,9 @@ body > .mui-progressbar
 .mui-icon-extra-outline:before { content: "\e606"; }
 
 
+.mint-header[data-v-7ba5bd90]{
+    z-index: 67
+}
 .app-container[data-v-7ba5bd90]{
     padding-top: 40px;
     padding-bottom: 50px;
@@ -6044,5 +6155,33 @@ body > .mui-progressbar
 .v-enter-active[data-v-7ba5bd90],
 .v-leave-active[data-v-7ba5bd90]{
     transition: all 0.5s ease;
+}
+/* 改类名，解决tabbar点击无法切换的问题 */
+.mui-bar-tab .mui-tab-item-lib.mui-active[data-v-7ba5bd90] {
+    color: #007aff;
+}
+.mui-bar-tab .mui-tab-item-lib[data-v-7ba5bd90] {
+    display: table-cell;
+    overflow: hidden;
+    width: 1%;
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #929292;
+}
+.mui-bar-tab .mui-tab-item-lib .mui-icon[data-v-7ba5bd90] {
+    top: 3px;
+    width: 24px;
+    height: 24px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.mui-bar-tab .mui-tab-item-lib .mui-icon ~ .mui-tab-label[data-v-7ba5bd90][data-v-7ba5bd90] {
+    font-size: 11px;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 

@@ -93,3 +93,33 @@ mui('.mui-scroll-wrapper').scroll({
 1. 在改造li成 router-link 的时候，需要使用 tag 属性 指定要渲染为 哪种元素
 
 ## 实现详情页面的布局和美化，同时获取数据渲染页面
+
+## 实现图片详情中缩略图功能
+1. 使用插件 vue-preview 这个缩略图插件
+2. 获取到所有的图片列表，然后使用 v-for 指令渲染数据
+
+3. 注意：img 标签上的class不能去掉
+4. 注意：每个图片数据中，必须有w 和 h 属性
+
+## 绘制商品列表 页面基本结构并美化
+
+## 常是在手机上，去进行项目的预览和测试
+1. 要保证自己的手机可以正常运行；
+2. 要保证手机和开发项目的电脑 处于同一个WIFI环境中，也就是说手机可以访问到电脑的IP
+3. 打开自己的 项目中 package.json文件，在dev脚本中，添加一个--host指令，把当前电脑的 WIFI IP地址，设置为--host的指令值。
++ 如何查看自己电脑所处WIFI 的IP 呢？在cmd 终端运行‘ipconfig’，查看无线网的ip地址
+## 两种网页跳转方式
+### 方式一：使用a标签的形式 叫做 标签跳转
+### 方式二：使用window.location.href的形式，叫做编程式跳转（导航）
+> 使用js的形式进行路由导航
+1. 一定要区分 this.$route 和 this.$router 这两个对象，
+2. 其中：this.$route 是路由【参数对象】，所有路由的参数，params ，query 都属于它
+3. 其中： this.$router 是一个路由【导航对象】，用它 可以方便的 使用JS代码，实现路由的前进，后退，跳转到新的URL地址
+```
+//1.最简单的
+this.$router.push('/home/goodsinfo/'+id)
+//2.传递对象
+this.$router.push({path:'/home/goodsinfo/'+id'})
+//3.传递命名的路由
+this.$router.push({ name:"goodsinfo",params:{id} })
+```
