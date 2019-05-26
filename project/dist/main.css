@@ -228,6 +228,21 @@
 }
 
 
+.mint-swipe[data-v-1df896bc]{
+    height: 200px;
+}
+.mint-swipe-item[data-v-1df896bc]{
+    text-align: center;
+}
+img[data-v-1df896bc]{
+    width: 100%;
+    height: 100%;
+}
+.full[data-v-1df896bc]{
+    width: 100%;
+}
+
+
 .mint-swipe[data-v-4fcacc3e]{
     height: 200px;
 }
@@ -454,6 +469,12 @@ position: relative
 .good-item .info .sell[data-v-0c7593ca]{
     display: flex;
     justify-content: space-between;
+}
+
+
+.goodsinfo-container[data-v-97a93baa]{
+    background-color: #eee;
+    overflow: hidden;
 }
 
 /*!

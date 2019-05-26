@@ -123,3 +123,8 @@ this.$router.push({path:'/home/goodsinfo/'+id'})
 //3.传递命名的路由
 this.$router.push({ name:"goodsinfo",params:{id} })
 ```
+## 如何实现再加入购物车的时候，拿到选择的数量
+1. 经过分析：按钮属于 goodsinfo页面，数字属于 numberbox组件
+2. 由于涉及到父子组件的嵌套，所以，无法直接在 goodsinfo页面中获取到商品的数量值 
+3. 怎么解决问题？：涉及到子组件向父组件传值（时间调用机制）
+4. 事件调用的本质：父向子传递方法，同时把 数据当做参数 传递给这个方法
