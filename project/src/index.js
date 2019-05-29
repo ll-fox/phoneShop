@@ -7,6 +7,82 @@ Vue.use(VueRouter)
 //1.3导入自己的router.js
 import router from "./router.js"
 //导入时间插件
+
+//注册vuex
+import Vuex from 'vuex'
+Vue.use(Vuex)
+
+//每次刚进入网站，肯定会调用index.js 在刚调用的时候，先从本地存储中，把购物车的数据读出来，存放到 store 中
+var car = JSON.parse(localStorage.getItem('car')||'[]')
+var store= new Vuex.Store({
+    state:{//this.$store.state.***
+        car:[]//将购物车中的商品数量，用一个数组存储起来，在car数组中，存储一些商品对象，咱们可以暂时将这个商品对象，设计成这个样子
+        //{id：商品的id，count：要购买的数量，price：商品的单价，selected：false}
+    },
+    mutations:{//this.$store.commit('方法的名称'，‘按需传递唯一参数’)
+        addToCar(state,goodsinfo){//点击加入购物车，把商品信息，保存到store中的car上
+            //分析：
+            //1.如果购物车中之前就已经有了对应的商品了，那么只需要更新数量
+            //2.如果没有，直接把商品数据，push 到car 即可
+
+            //假设 在购物车中，没有找到对应商品
+            var flag=false
+
+            state.car.some(item=>{
+                if(item.id=goodsinfo.id){
+                    item.count+=parseInt(goodsinfo.count);
+                    flag=true;
+                    return true;
+                }
+            })
+            //如果最终循环完毕，得到的flag 还是 false ，则把商品数据直接push到购物车中
+            if(!flag){
+                state.car.push(goodsinfo)
+            }
+
+            //当更新car之后，把car 数组 ，存储到 本地的 localStorage 中
+            localStorage.setItem('car',JSON.stringify(state.car))
+            
+        },
+        updateGoodsInfo(state,goodsinfo){//购物车内修改商品数量
+            state.car.some(item=>{
+                if(item.id==goodsinfo.id){
+                    item.count=parseInt(goodsinfo.count);
+                    return true
+                }
+            })
+            //当修改完商品的数量，把最新的数量保存到 本地存储中
+            localStorage.setItem('car',JSON.stringify(state.car))
+        },
+        removeFormCar(state,id){
+            //根据id，从store中的购物车中删除对应的那条数据
+            state.car.some((item,i)=>{
+                if(item.id==id){
+                    state.car.splice(i,1)
+                    return true
+                }
+            })
+            localStorage.setItem('car',JSON.stringify(state.car))
+        }
+    },
+    //相当于计算属性，也相当于过滤器
+    getters:{//this.$store.getters.***
+        getAllCount(state){
+            var c=0;
+            state.car.forEach(item=>{
+                c += item.count
+            })
+            return c;
+        },
+        getGoodsCount(state){
+            var o={};
+            state.car.forEach(item=>{
+                o[item.id]=item.count
+             })
+             return o
+        }
+    }
+})
 import moment from 'moment'
 //定义全局过滤器
 Vue.filter("dateFormat",function(dataStr,pattern="YYYY-MM-DD HH:mm:ss"){
@@ -52,11 +128,12 @@ import './lib/mui/css/icons-extra.css'
 //使用Vue.component 注册按钮组件
 // Vue.component(Button.name,Button)//Button.name就是组件名称（mt-button ）
 
-import { Header,Swipe, SwipeItem ,Lazyload,Button} from 'mint-ui';
+import { Header,Swipe, SwipeItem ,Lazyload,Button,Switch} from 'mint-ui';
 Vue.component(Header.name, Header);
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 Vue.component(Button.name, Button);
+Vue.component(Switch.name, Switch);
 
 Vue.use(Lazyload);
 //导入App根组件
@@ -65,5 +142,6 @@ import app from './App.vue'
 var vm = new Vue({
     el: '#app',
     render: c=>c(app),
-    router//1.4挂载路由对象到实例vm
+    router,//1.4挂载路由对象到实例vm
+    store//挂载store状态管理工具
 })

@@ -476,6 +476,36 @@ position: relative
     background-color: #eee;
     overflow: hidden;
 }
+.mui-card-footer[data-v-97a93baa]{
+    display: block;
+}
+.mui-card-footer button[data-v-97a93baa]{
+    margin:15px 0;
+}
+.mui-card-content-inner .new_price[data-v-97a93baa]{
+    color: red
+}
+.ball[data-v-97a93baa]{
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: red;
+    position: absolute;
+    top: 388px;
+    left: 152px;
+    z-index: 99;
+}
+
+
+.goodsdesc[data-v-33995ae4]{
+    padding: 4px;
+}
+.goodsdesc h3[data-v-33995ae4]{
+    font-size: 16px;
+    text-align: center;
+    color: #226aff;
+    margin: 15px 0;
+}
 
 /*!
  * =====================================================
