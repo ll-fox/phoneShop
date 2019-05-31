@@ -2,7 +2,11 @@
 <template>
     <div class="app-container">
         <!-- 顶部Header区域 -->
-        <mt-header fixed title="首页"></mt-header>
+        <mt-header fixed title="首页">
+            <span slot="left" @click="goback" v-show="flag">
+            <mt-button icon="back">返回</mt-button>
+            </span>
+        </mt-header>
         <!-- 中间的 路由 router-view -->
         <!-- 加动画 -->
         <transition>
@@ -32,7 +36,32 @@
 </template>
 
 <script>
-
+export default{
+    data() {
+        return {
+            //返回按钮的显示
+            flag:false
+        }
+    },
+    created() {
+        this.flag=this.$route.path==="/home"?false:true
+    },
+    methods: {
+        //点击后退
+        goback(){
+            this.$router.go(-1);
+        }    
+    },
+    watch: {
+        'this.route':function(newVal){
+            if(newVal==='/home'){
+                this.flag=false
+            }else{
+                this.flag=true
+            }
+        }
+    },
+}
 </script>
 
 <style scoped>

@@ -6,7 +6,8 @@
             <div class="mui-card" v-for="item in goodslist" :key="item.id">
 				<div class="mui-card-content">
 					<div class="mui-card-content-inner">
-						<mt-switch></mt-switch>
+						<mt-switch v-model="$store.getters.getGoodsSelected[item.id]" 
+                        @change="selectedChanged(item.id,$store.getters.getGoodsSelected[item.id])"></mt-switch>
                         <img :src="item.thumn_path">
                         <div class="info">
                             <h1>{{item.title}}</h1>
@@ -21,6 +22,7 @@
 					</div>
 				</div>
 			</div>
+            
         </div>
 
         <!-- 结算区域 -->
@@ -30,12 +32,13 @@
                 <div class="mui-card-content-inner jiesuan">
                     <div class="left">
                         <p>总计(不含运费)</p>
-                        <p>已勾选商品 <span class="red"> 0 </span>件，总价 <span class="red">￥0 </span></p>
+                        <p>已勾选商品 <span class="red"> {{$store.getters.getGoodsCountAndAmount.count}}</span>件，总价 <span class="red">￥{{$store.getters.getGoodsCountAndAmount.amount}}</span></p>
                     </div>
                     <mt-button type="danger">去结算</mt-button>
                 </div>
             </div>
         </div>
+        <!-- <p>{{$store.getters.getGoodsSelected}}</p> -->
     </div>
 </template>
 <script>
@@ -75,6 +78,11 @@ export default{
                     sell_price:3001,
                     thumn_path:"http://img1.gtimg.com/cq/pics/hv1/148/49/2295/149245018.jpg"
                 })
+        },
+        selectedChanged(id,val){
+            //每当点击开关，把最新的 开关状态同步到 store 中
+            console.log(id+"----"+val)
+            this.$store.commit("updateGoodsSelected",{id,selected:val})
         }
     }, 
     //         //获取购物车商品列表

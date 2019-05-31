@@ -63,6 +63,15 @@ var store= new Vuex.Store({
                 }
             })
             localStorage.setItem('car',JSON.stringify(state.car))
+        },
+        updateGoodsSelected(state,info){
+            state.car.some(item=>{
+                if(item.id==info.id){
+                    item.selected=info.selected
+                }
+            })
+            //把最新的 所有的购物车商品的状态保存到 store 中去
+            localStorage.setItem('car',JSON.stringify(state.car))
         }
     },
     //相当于计算属性，也相当于过滤器
@@ -80,6 +89,26 @@ var store= new Vuex.Store({
                 o[item.id]=item.count
              })
              return o
+        },
+        getGoodsSelected(state){
+            var o={}
+            state.car.forEach(item=>{
+                o[item.id]=item.selected
+            })
+            return o
+        },
+        getGoodsCountAndAmount(state){
+            var o={
+                count:0,//勾选数量
+                amount:0//勾选总价
+            }
+            state.car.forEach(item=>{
+                if(item.selected){
+                    o.count+=item.count;
+        amount+=item.price*item.count
+                }
+            })
+            return o
         }
     }
 })
