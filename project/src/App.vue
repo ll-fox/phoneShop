@@ -53,7 +53,7 @@ export default{
         }    
     },
     watch: {
-        'this.route':function(newVal){
+        '$route.path':function(newVal){
             if(newVal==='/home'){
                 this.flag=false
             }else{

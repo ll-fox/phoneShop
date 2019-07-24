@@ -105,7 +105,7 @@ var store= new Vuex.Store({
             state.car.forEach(item=>{
                 if(item.selected){
                     o.count+=item.count;
-        amount+=item.price*item.count
+                    o.amount+=item.price*item.count
                 }
             })
             return o

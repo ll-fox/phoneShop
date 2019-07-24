@@ -34,7 +34,7 @@ export default{
             lunbotuList:[
                 {
                     id:1,
-                    img:"http://images.glass.cn/news/201901/9ae6a93c5ba54071b96beb6a1590b75d.jpg"
+                    img:"http://www.lunwenstudy.com/uploads/allimg/181017/34-1Q01G600053W.jpg"
                 },
                 {
                     id:3,
